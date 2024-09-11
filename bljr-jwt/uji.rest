@@ -1,0 +1,29 @@
+GET http://localhost:3000
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6ImJvd28iLCJlbWFpbHMiOiJib3dvQGdtYWlsLmNvbSIsImlhdCI6MTcyNjAyNTI0OSwiZXhwIjoxNzI2MDI1MjY0fQ.tStprvRWpUrnwMNAtnC_X3owudNc46tgESM4l_WXX94
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "bowo@gmail.com",
+    "password": "123456789"
+}
+
+###
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "name": "tes",
+    "email": "tes@gmail.com",
+    "password": "qwerty",
+    "confPassword": "qwerty"
+}
+
+
+###
+GET http://localhost:3000/token
+
+###
+DELETE http://localhost:3000/logout

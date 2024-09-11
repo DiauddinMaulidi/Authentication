@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="signup-form">
+      <h2>Sign Up</h2>
+      <form action="/signup" method="POST">
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" required />
+
+        <label for="confPassword">Confirmasi Password</label>
+        <input type="text" id="confPassword" name="confPassword" required />
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = form.name;
+        const email = form.email;
+        const password = form.password;
+        const confPassword = form.confPassword;
+
+        const datas = await fetch("/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name.value,
+            email: email.value,
+            password: password.value,
+            confPassword: confPassword.value,
+          }),
+        });
+        const result = await datas.text();
+        alert(result);
+        // console.log(result);
+
+        name.value = "";
+        email.value = "";
+        password.value = "";
+        confPassword.value = "";
+      });
+    </script>
+  </body>
+</html>
